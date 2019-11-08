@@ -81,9 +81,10 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $events = Event::all();
+        return view('display')->with('events',$events); 
     }
 
     /**
@@ -94,7 +95,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $events=Event::find($id);
+        return view('editform',compact('events','id'));
     }
 
     /**
@@ -106,7 +108,24 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+     $this->validate($request,[
+            'title'=>'required',
+            'color'=>'required',
+            'start_date'=>'required',
+            'end_date'=>'required',
+     ]); 
+     $events = Event::find($id);
+
+     $events->title = $request->input('title');
+     $events->color = $request->input('color');
+     $events->start_date = $request->input('start_date');
+     $events->end_date = $request->input('end_date');
+
+     $events->save();
+     //echo "data saved";
+    
+     return redirect('events')->with('success','Event updated');
+     
     }
 
     /**

@@ -18,7 +18,7 @@
 <div class="row">
 
             <a href="/addevents" class="btn btn-success">Add Event</a>
-            <a href="/displayevents" class="btn btn-primary">Edit Events</a>
+            <a href="/displaydata" class="btn btn-primary">Edit Events</a>
             <a href="/deleteevents" class="btn btn-danger">Delete Event</a>
         </div>
         <div class="row">
