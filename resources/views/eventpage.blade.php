@@ -15,7 +15,29 @@
 <body>
 <div class="container">
 <div class="jumbotron">
-    <div class="row">
+<div class="row">
+
+            <a href="/addevents" class="btn btn-success">Add Event</a>
+            <a href="/displayevents" class="btn btn-primary">Edit Events</a>
+            <a href="/deleteevents" class="btn btn-danger">Delete Event</a>
+        </div>
+        <div class="row">
+
+            @if(count($errors)> 0)
+            <div class="alert alert-danger">
+            <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+            </ul>
+            </div>
+            @endif
+
+            @if(\Session::has('success'))
+            <div class="alert alert-success">
+            <p>{{ \Session::get('success')}}</p>
+            </div>
+            @endif
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background: #2e6da4; color: white;">Full Calendar Example</div>

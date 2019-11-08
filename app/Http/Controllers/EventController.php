@@ -53,9 +53,26 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function display(){
+        return view('addevent');
+    }
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required',
+            'color'=>'required',
+            'start_date'=>'required',
+            'end_date'=>'required',
+        ]);
+        $events= new Event;
+        $events->title=$request->input('title');
+        $events->color=$request->input('color');
+        $events->start_date=$request->input('start_date');
+        $events->end_date=$request->input('end_date');
+
+        $events->save();
+
+        return redirect('events')->with('success','Events Added');
     }
 
     /**
