@@ -34,6 +34,13 @@
             <th><a href="{{action('EventController@edit',$event['id'])}}" class="btn btn-success">
                     <i class="glyphicon glyphicon-edit"></i>Edit</a>
                 </th>
+                <th><form method="DELETE" action="{{action('EventController@destroy' ,$event['id'])}}">
+                {{csrf_field()}}
+                <input type="hidden" name="_method" value="DELETE" />
+                <button type="submit" class="btn btn-danger">
+                          Delete</button>
+                            </form>
+                            </th>
               </tr>
             </tbody>
             @endforeach  
